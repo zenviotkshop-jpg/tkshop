@@ -82,6 +82,7 @@ html,body{margin:0;background:#000}
       <div id="n_can" class="pill" style="background:#c96a2c;color:#fff;font-size:40px;padding:10px 30px;box-shadow:none;border-width:5px">CANELA</div></div>
   </div>
   <div id="t_dura" class="abs tag" style="background:#7a4fd6;opacity:0;font-size:54px;text-align:center;line-height:1.05">SIGUE OLIENDO<br>POR LA NOCHE</div>
+  <div id="t_espera" class="abs big" style="font-size:118px;opacity:0;line-height:1;color:#fff">PERO<br><span style="color:#ffd93b">ESPERA…</span></div>
   <div id="t_ting" class="abs big" style="font-size:150px;opacity:0;color:#ffd93b">¡TING!</div>
   <div id="t_plus" class="abs tag" style="background:#33d17a;font-size:70px;opacity:0;text-align:center;line-height:1">+5%<div style="font-size:30px;letter-spacing:3px">GLOW-UP</div></div>
   <div id="t_antes" class="abs tag" style="background:#6b6b6b;font-size:52px;opacity:0">ANTES</div>
@@ -329,7 +330,7 @@ function mom(o){ // asomándose por la puerta
    <path d="M101 225h14" stroke="${OL}" stroke-width="6"/><ellipse cx="108" cy="285" rx="20" ry="${12}" fill="#5a1e24" stroke="${OL}" stroke-width="6"/></g>`}
 
 // ---------- CAPTIONS ----------
-const KEY=['Khamrah','Lattafa.','vainilla','canela...','noche','olía.','moscas','seguidores.','ex...','casa?','treinta','días!?','ducharme.','cuatro.','glow','up.','persona.','perfume','TikTok','Shop.','van!','verdad!','¿éxito?','carrito','naranja.','ventana.','2019.','historia.','dientes,','pelo...','granos?','encuesta.','dos!','espray...','acabó.'];
+const KEY=['espera...','fuerte','ahora.','Khamrah','Lattafa.','vainilla','canela...','noche','olía.','moscas','seguidores.','ex...','casa?','treinta','días!?','ducharme.','cuatro.','glow','up.','persona.','perfume','TikTok','Shop.','van!','verdad!','¿éxito?','carrito','naranja.','ventana.','2019.','historia.','dientes,','pelo...','granos?','encuesta.','dos!','espray...','acabó.'];
 const RED=['ex...','casa?','treinta','días!?','2019.','historia.','cuatro.'];
 const chunks=[];{let cur=[];WORDS.forEach((w,i)=>{cur.push(i);const end=/[.,!?:]$/.test(w[2])||/\.\.\.$/.test(w[2]);const gap=WORDS[i+1]?WORDS[i+1][0]-w[1]:9;if(cur.length>=3||end||gap>.35){chunks.push(cur);cur=[]}});if(cur.length)chunks.push(cur)}
 function caption(t){
@@ -362,7 +363,7 @@ function render(tn){
   if(t>=21.9&&t<24.1){expr='happy';arms='hold'}
   if(t>=24.1&&t<30.8){expr='determined';arms=(t>24.3&&t<25.2)||(t>27.6&&t<28.5)?'spray':'hold';if(t>25.5&&t<27.2){look=1;expr='tired'}if(t>28.8)expr='shock'}
   if(t>=30.8&&t<34.4){expr=t<33.4?'sniff':'happy';arms=t<33.0?'down':'up'}
-  if(t>=34.4&&t<36.8){expr='happy';arms='point'}
+  if(t>=34.4&&t<36.8){const es=wt('espera',INS.B[0]);if(es>0&&tn>=es-.1){expr='determined';look=1}else{expr='happy';arms='down'}}
   if(t>=36.8&&t<43.0){expr=t<39.6?'tired':'happy';look=1}
   if(t>=43.0&&t<45.7){expr='shock'}
   if(t>=18.1&&t<19.7){arms='up'}
@@ -486,10 +487,11 @@ function render(tn){
   place('t_plus',t,33.25,34.4,260,640,6);
   place('t_antes',t,30.95,32.95,270,500,-4);
   place('t_desp',t,31.15,32.95,810,500,4);
-  const no=wt('noche',INS.B[0]),cr=wt('carrito',INS.B[0]);
-  place('t_dura',tn,no>0?no-.1:INS.B[0],cr>0?cr-.3:INS.B[1],540,470,-3);
-  place('cart',tn,cr>0?cr-.3:INS.B[0],INS.B[1]+.05,540,520,-2);
-  {const p=pop(tn,cr>0?cr-.15:INS.B[0],INS.B[1]+.05);const el=$('arrow');el.style.opacity=p.o;el.style.left='120px';el.style.top=(1480+Math.sin(TA*10)*24)+'px';el.style.transform=`scale(${p.s}) rotate(18deg)`;}
+  const no=wt('noche',INS.B[0]),es=wt('espera',INS.B[0]),cr=wt('carrito',INS.A[0]);
+  place('t_dura',tn,no>0?no-.1:INS.B[0],es>0?es-.15:INS.B[1],540,470,-3);
+  place('t_espera',tn,es>0?es-.05:INS.B[1],INS.B[1]+.5,540,560,3,1+.03*Math.sin(TA*14));
+  place('cart',tn,cr>0?cr-.25:INS.A[0],(hu>0?hu+1.4:INS.A[1]),540,1010,-2,.82);
+  {const p=pop(tn,cr>0?cr-.1:INS.A[0],(hu>0?hu+1.4:INS.A[1]));const el=$('arrow');el.style.opacity=p.o;el.style.left='120px';el.style.top=(1480+Math.sin(TA*10)*24)+'px';el.style.transform=`scale(${p.s}) rotate(18deg)`;}
   place('bubble',t,37.9,40.4,700,520,0);
   place('t_vent',t,39.65,43.0,400,1080,-3);
   place('t_2019',t,40.6,43.0,420,1180,3);
