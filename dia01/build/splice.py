@@ -13,7 +13,8 @@ iB=next(i for i,w in enumerate(NW) if w[2].lower().startswith('y') and i>0 and N
 A=(max(0,NW[0][0]-.06), NW[iB-1][1]+.15); B=(NW[iB][0]-.06, NW[-1][1]+.2)
 OA=(21.90,24.10); OB=(34.40,36.85); OEND=len(orig)/SR
 cut=lambda x,a,b:x[int(a*SR):int(b*SR)]
-parts=[cut(orig,0,OA[0]),cut(new,*A),cut(orig,OA[1],OB[0]),cut(new,*B),cut(orig,OB[1],OEND)]
+GB=float(sys.argv[3]) if len(sys.argv)>3 else 1.0
+parts=[cut(orig,0,OA[0]),cut(new,*A),cut(orig,OA[1],OB[0]),cut(new,*B)*GB,cut(orig,OB[1],OEND)]
 # micro fundidos para evitar clics
 for k,p in enumerate(parts):
     f=min(len(p)//4,int(.008*SR)); p=p.copy(); p[:f]*=np.linspace(0,1,f); p[-f:]*=np.linspace(1,0,f); parts[k]=p

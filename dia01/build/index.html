@@ -507,8 +507,8 @@ function render(tn){
     [['v1',47.15],['v2',48.05],['v3',48.9]].forEach(([id,a],i)=>{const p=pop(t,a,99);const el=$(id);el.style.opacity=p.o;
       const hl=t>=a&&t<a+.8?1.06:1;el.style.transform=`scale(${p.s*hl}) rotate(${[-4,0,4][i]+Math.sin(t*3+i)*1.5}deg)`});
     place('v_btn',t,49.6,99,540,1105,0,1+.04*Math.sin(t*8));
-    place('v_sig',t,50.85,99,540,1450,0);
-    $('v_dani').innerHTML=`<g transform="translate(540,${lerp(2500,2080,eout(seg(t,46.0,46.6)))}) scale(.72)">${dani({expr:'happy',arms:'wave',mouth:lvl(tn),t:TA})}</g>`;
+    place('v_sig',t,50.85,99,540,1395,0);
+    $('v_dani').innerHTML=`<g transform="translate(540,${lerp(2500,2170,eout(seg(t,46.0,46.6)))}) scale(.72)">${dani({expr:'happy',arms:'wave',mouth:lvl(tn),t:TA})}</g>`;
   }
   caption(tn);
   // destello
