@@ -329,7 +329,7 @@ function mom(o){ // asomándose por la puerta
    <path d="M101 225h14" stroke="${OL}" stroke-width="6"/><ellipse cx="108" cy="285" rx="20" ry="${12}" fill="#5a1e24" stroke="${OL}" stroke-width="6"/></g>`}
 
 // ---------- CAPTIONS ----------
-const KEY=['moscas','seguidores.','ex...','casa?','treinta','días!?','ducharme.','cuatro.','glow','up.','persona.','perfume','TikTok','Shop.','van!','verdad!','¿éxito?','carrito','naranja.','ventana.','2019.','historia.','dientes,','pelo...','granos?','encuesta.','dos!','espray...','acabó.'];
+const KEY=['Khamrah','Lattafa.','vainilla','canela...','noche','olía.','moscas','seguidores.','ex...','casa?','treinta','días!?','ducharme.','cuatro.','glow','up.','persona.','perfume','TikTok','Shop.','van!','verdad!','¿éxito?','carrito','naranja.','ventana.','2019.','historia.','dientes,','pelo...','granos?','encuesta.','dos!','espray...','acabó.'];
 const RED=['ex...','casa?','treinta','días!?','2019.','historia.','cuatro.'];
 const chunks=[];{let cur=[];WORDS.forEach((w,i)=>{cur.push(i);const end=/[.,!?:]$/.test(w[2])||/\.\.\.$/.test(w[2]);const gap=WORDS[i+1]?WORDS[i+1][0]-w[1]:9;if(cur.length>=3||end||gap>.35){chunks.push(cur);cur=[]}});if(cur.length)chunks.push(cur)}
 function caption(t){
