@@ -70,10 +70,18 @@ html,body{margin:0;background:#000}
     <div><div style="font-weight:900;font-size:30px;letter-spacing:3px;color:#8a7fa3">PASO 1</div><div style="font-family:L;font-size:70px;color:#14101f;line-height:1">OLER A PERSONA</div></div>
   </div>
   <div id="order" class="abs card" style="left:120px;top:400px;width:840px;opacity:0;display:flex;align-items:center;gap:26px;padding:26px 32px;border-radius:30px">
-    <div style="width:110px;height:110px;border-radius:26px;background:#14101f;display:flex;align-items:center;justify-content:center"><svg width="70" height="70" viewBox="0 0 70 70"><path d="M8 18h8l8 32h32l7-24H22" fill="none" stroke="#ff7a1a" stroke-width="7" stroke-linejoin="round"/><circle cx="28" cy="60" r="6" fill="#ff7a1a"/><circle cx="52" cy="60" r="6" fill="#ff7a1a"/></svg></div>
+    <img src="../assets/khamrah.jpg" style="width:130px;height:112px;object-fit:cover;border-radius:20px;border:4px solid #14101f">
     <div style="flex:1"><div style="font-weight:800;font-size:28px;color:#8a7fa3;letter-spacing:2px">TIKTOK SHOP · PEDIDO</div><div style="font-weight:900;font-size:52px;color:#14101f" id="prodname">Perfume</div></div>
-    <div id="precio" style="font-weight:900;font-size:48px;color:#ff4757"></div>
+    <div style="text-align:right"><div id="precio" style="font-weight:900;font-size:44px;color:#14101f"></div><div style="font-weight:800;font-size:24px;color:#20b26b">Envío gratis</div></div>
   </div>
+  <div id="prod" class="abs card" style="width:760px;opacity:0;padding:22px 22px 26px;text-align:center">
+    <img src="../assets/khamrah.jpg" style="width:700px;height:500px;object-fit:contain;display:block;margin:0 auto">
+    <div style="font-weight:900;font-size:56px;color:#14101f;margin-top:6px">Khamrah · Lattafa</div>
+    <div style="display:flex;gap:18px;justify-content:center;margin-top:14px">
+      <div id="n_vai" class="pill" style="background:#ffe7b3;color:#7a4a12;font-size:40px;padding:10px 30px;box-shadow:none;border-width:5px">VAINILLA</div>
+      <div id="n_can" class="pill" style="background:#c96a2c;color:#fff;font-size:40px;padding:10px 30px;box-shadow:none;border-width:5px">CANELA</div></div>
+  </div>
+  <div id="t_dura" class="abs tag" style="background:#7a4fd6;opacity:0;font-size:54px;text-align:center;line-height:1.05">SIGUE OLIENDO<br>POR LA NOCHE</div>
   <div id="t_ting" class="abs big" style="font-size:150px;opacity:0;color:#ffd93b">¡TING!</div>
   <div id="t_plus" class="abs tag" style="background:#33d17a;font-size:70px;opacity:0;text-align:center;line-height:1">+5%<div style="font-size:30px;letter-spacing:3px">GLOW-UP</div></div>
   <div id="t_antes" class="abs tag" style="background:#6b6b6b;font-size:52px;opacity:0">ANTES</div>
@@ -109,7 +117,7 @@ html,body{margin:0;background:#000}
 </div>
 <script src="data.js"></script>
 <script>
-const CONFIG={producto:'Perfume', precio:''}; // precio p.ej. '-12,99 €' (vacío = no se muestra)
+const CONFIG={producto:'Khamrah · Lattafa', precio:'25,99 €'}; // precio p.ej. '-12,99 €' (vacío = no se muestra)
 document.getElementById('prodname').textContent=CONFIG.producto;
 document.getElementById('precio').textContent=CONFIG.precio;
 
@@ -189,9 +197,12 @@ function limb(pts,w,col){const d='M'+pts.map(p=>p.join(' ')).join(' L');
   return `<path d="${d}" fill="none" stroke="${OL}" stroke-width="${w+16}" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="${col}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`}
 function hand(x,y,r=36){return `<circle cx="${x}" cy="${y}" r="${r}" fill="${SK}" stroke="${OL}" stroke-width="8"/>`}
 function bottle(x,y,rot=0,s=1){return `<g transform="translate(${x},${y}) rotate(${rot}) scale(${s})">
-  <rect x="-14" y="-118" width="28" height="26" rx="5" fill="#d9d9e3" stroke="${OL}" stroke-width="6"/><rect x="-22" y="-96" width="44" height="22" rx="6" fill="#e6b422" stroke="${OL}" stroke-width="6"/>
-  <path d="M-50 -74h100c10 0 16 8 16 18v80c0 14-10 24-24 24h-84c-14 0-24-10-24-24v-80c0-10 6-18 16-18z" fill="#ff8fc0" stroke="${OL}" stroke-width="8"/>
-  <path d="M-34 -58v66" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".7"/><rect x="-24" y="-20" width="48" height="30" rx="6" fill="#fff" opacity=".9"/></g>`}
+  <rect x="-48" y="-150" width="96" height="76" rx="10" fill="#f4efe6" stroke="${OL}" stroke-width="7"/>
+  <path d="M-36 -138l30 30M-18 -144l40 40M4 -144l34 34M-40 -116l22 22" stroke="#c9bfae" stroke-width="7" stroke-linecap="round"/>
+  <rect x="-56" y="-76" width="112" height="106" rx="12" fill="#a8461c" stroke="${OL}" stroke-width="8"/>
+  <path d="M-46 -60l36 36M-30 -66l50 50M-8 -66l52 52M-46 -30l30 30" stroke="#c96a2c" stroke-width="7" stroke-linecap="round"/>
+  <path d="M-44 -66v80" stroke="#ffd29a" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+  <rect x="-20" y="-24" width="40" height="34" rx="4" fill="#e6b422" stroke="${OL}" stroke-width="4"/><path d="M-12 -12h24M-10 0h20" stroke="#7a5a12" stroke-width="3"/></g>`}
 function dani(o){
   const m=o.mouth||0, ex=o.expr||'tired', arms=o.arms||'down';
   let s='';
@@ -334,7 +345,12 @@ function caption(t){
 
 // ---------- RENDER ----------
 const W=$('world');
-function render(t){
+let TA=0;
+const W2S=tn=>{for(const [n0,n1,s0,s1] of WARP)if(tn>=n0&&tn<n1)return s0+(tn-n0)*(s1-s0)/(n1-n0);const l=WARP[WARP.length-1];return l[3]+(tn-l[1])};
+const S2W=ts=>{for(const [n0,n1,s0,s1] of WARP)if(ts>=s0&&ts<s1)return n0+(ts-s0)*(n1-n0)/(s1-s0);const l=WARP[WARP.length-1];return l[1]+(ts-l[3])};
+const wt=(w,after=0)=>{const x=WORDS.find(a=>a[0]>=after&&a[2].toLowerCase().replace(/[^a-záéíóúñ]/g,'')===w);return x?x[0]:-1};
+function render(tn){
+  const t=W2S(tn);TA=tn;
   // estado del olor
   const stinkAmt=t<27.9?1:t<24.5?1:1-seg(t,28.6,30.0);
   const stinkA=t<24.6?1:t<27.9?.7:stinkAmt*.7;
@@ -350,8 +366,8 @@ function render(t){
   if(t>=36.8&&t<43.0){expr=t<39.6?'tired':'happy';look=1}
   if(t>=43.0&&t<45.7){expr='shock'}
   if(t>=18.1&&t<19.7){arms='up'}
-  const blink=(expr==='tired'||expr==='determined'||expr==='shock')&&((t%3.3)<.12);
-  const mouth=lvl(t);
+  const blink=(expr==='tired'||expr==='determined'||expr==='shock')&&((TA%3.3)<.12);
+  const mouth=lvl(tn);
   // cámara
   let cx=540,cy=1060,z=1;
   const K=(a,b,c)=>eio(seg(t,a,b));
@@ -376,7 +392,7 @@ function render(t){
   let s='';
   const danify=(x,y,sc,st,flyMode,dOpts)=>{
     let g=`<g transform="translate(${x},${y}) scale(${sc})">`;
-    g+=`<g>${stink(0,-560,st,t)}</g>`;
+    g+=`<g>${stink(0,-560,st,TA)}</g>`;
     g+=dani(dOpts)+`</g>`;
     return g;
   };
@@ -385,39 +401,39 @@ function render(t){
     // madre
     s+=`</g>`;
     s+=`<g transform="${cam}">`;
-    s+=danify(540,1600,1.05,stinkA,0,{expr,arms,mouth,blink,tilt,look,t,rays:t>=22.7&&t<24.1});
+    s+=danify(540,1600,1.05,stinkA,0,{expr,arms,mouth,blink,tilt,look,t:TA,rays:tn>=INS.A[0]+.6&&tn<INS.A[1]});
     // spray mist
     if(t>=24.3&&t<25.6)s+=`<g transform="translate(540,1600) scale(1.05)">${mist(110,-720,seg(t,24.3,25.6),t)}</g>`;
     if(t>=27.6&&t<29.0)s+=`<g transform="translate(540,1600) scale(1.05)">${mist(110,-720,seg(t,27.6,29.0),t)}</g>`;
     // aroma rosa después
-    if(t>=29.4&&t<43)s+=`<g transform="translate(540,1600) scale(1.05)">${stink(0,-560,.55*seg(t,29.4,30.2),t,'#ff9ccc')}</g>`;
-    if(t>=33.0&&t<36.8)s+=sparkles(540,940,t,9,330);
+    if(t>=29.4&&t<43)s+=`<g transform="translate(540,1600) scale(1.05)">${stink(0,-560,.55*seg(t,29.4,30.2),TA,'#ff9ccc')}</g>`;
+    if(t>=33.0&&t<36.8)s+=sparkles(540,940,TA,9,330);
     // moscas
     for(let i=0;i<5;i++){
-      const ph=i*1.31;let x=540+Math.cos(t*(2.1+i*.37)+ph)*(200+i*30), y=880+Math.sin(t*(2.9+i*.23)+ph*2)*(140+i*22)+ (i%2?120:-40);
+      const ph=i*1.31;let x=540+Math.cos(TA*(2.1+i*.37)+ph)*(200+i*30), y=880+Math.sin(TA*(2.9+i*.23)+ph*2)*(140+i*22)+ (i%2?120:-40);
       let sc=1.5, dead=false;
       if(i===0&&t>=4.3){ // la que se desmaya
         const k=seg(t,4.3,5.2); const x0=540+Math.cos(4.3*2.1)*200,y0=880+Math.sin(4.3*2.9)*140-40; x=x0+Math.sin(k*9)*30; y=y0+eio(k)*900; dead=true; if(t>5.4)continue;
       }
       if(t>=25.6&&t<28.85){ // se lo piensan: se congelan
-        const tf=25.6; x=540+Math.cos(tf*(2.1+i*.37)+ph)*(200+i*30)+Math.sin(t*20+i)*4; y=880+Math.sin(tf*(2.9+i*.23)+ph*2)*(140+i*22)+(i%2?120:-40);
+        const tf=S2W(25.6); x=540+Math.cos(tf*(2.1+i*.37)+ph)*(200+i*30)+Math.sin(t*20+i)*4; y=880+Math.sin(tf*(2.9+i*.23)+ph*2)*(140+i*22)+(i%2?120:-40);
         if(t<27.6)s+=`<text x="${x+10}" y="${y-38}" font-family="L" font-size="54" fill="#ffd93b" stroke="#14101f" stroke-width="10" paint-order="stroke" text-anchor="middle" transform="rotate(${(i%2?8:-8)} ${x} ${y})">?</text>`;
       }
-      if(t>=28.85){ const tf=25.6;const x0=540+Math.cos(tf*(2.1+i*.37)+ph)*(200+i*30), y0=880+Math.sin(tf*(2.9+i*.23)+ph*2)*(140+i*22)+(i%2?120:-40);
+      if(t>=28.85){ const tf=S2W(25.6);const x0=540+Math.cos(tf*(2.1+i*.37)+ph)*(200+i*30), y0=880+Math.sin(tf*(2.9+i*.23)+ph*2)*(140+i*22)+(i%2?120:-40);
         const k=eout(seg(t,28.85+i*.08,29.9+i*.08)); x=lerp(x0,1500+i*60,k); y=lerp(y0,y0-300-i*40,k); if(k>=1)continue;
         if(k>0&&k<.9)s+=`<path d="M${x-40} ${y}h-80M${x-40} ${y+16}h-60" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".7"/>`}
       if(t>=29.95)continue;
-      if(i===0&&t<4.3||i>0||t>=4.3&&i===0) s+=fly(x,y,sc,t,ph,dead);
+      if(i===0&&t<4.3||i>0||t>=4.3&&i===0) s+=fly(x,y,sc,TA,ph,dead);
     }
     s+=`</g>`;
   } else {
     // ANTES / DESPUÉS
     s+=`<defs><clipPath id="cl"><rect x="0" y="0" width="538" height="1920"/></clipPath><clipPath id="cr"><rect x="542" y="0" width="538" height="1920"/></clipPath></defs>`;
     s+=`<g clip-path="url(#cl)"><g transform="translate(-270,0)">${ROOM}</g><rect width="540" height="1920" fill="#000" opacity=".35"/>
-       <g transform="translate(270,1500) scale(.78)">${stink(0,-560,1,t)}${dani({expr:'tired',arms:'down',mouth:0,blink:(t%2)<.1})}</g>
-       ${[0,1,2,3].map(i=>fly(270+Math.cos(t*3+i*1.6)*180,900+Math.sin(t*4+i)*120,1.2,t,i)).join('')}</g>`;
+       <g transform="translate(270,1500) scale(.78)">${stink(0,-560,1,TA)}${dani({expr:'tired',arms:'down',mouth:0,blink:(TA%2)<.1})}</g>
+       ${[0,1,2,3].map(i=>fly(270+Math.cos(TA*3+i*1.6)*180,900+Math.sin(TA*4+i)*120,1.2,TA,i)).join('')}</g>`;
     s+=`<g clip-path="url(#cr)"><g transform="translate(270,0)">${ROOM}</g>
-       <g transform="translate(810,1500) scale(.78)">${stink(0,-560,.6,t,'#ff9ccc')}${dani({expr:'happy',arms:'up',mouth:.3,t})}</g>${sparkles(810,950,t,7,240)}</g>`;
+       <g transform="translate(810,1500) scale(.78)">${stink(0,-560,.6,TA,'#ff9ccc')}${dani({expr:'happy',arms:'up',mouth:.3,t:TA})}</g>${sparkles(810,950,TA,7,240)}</g>`;
     s+=`<rect x="533" y="0" width="14" height="1920" fill="#fff"/>`;
   }
   // madre en la puerta (en coordenadas de cámara)
@@ -461,13 +477,19 @@ function render(t){
   place('t_go',t,18.15,19.75,540,520,-3);
   place('t_paso',t,19.9,21.9,540,620,2);
   $('checkp').setAttribute('stroke-dashoffset',90*(1-eout(seg(t,21.3,21.7))));
-  place('order',t,22.0,24.1,540,470,-2);
+  const hu=wt('huele',INS.A[0]);
+  place('order',tn,INS.A[0]+.08,hu>0?hu-.1:INS.A[1],540,470,-2);
+  place('prod',tn,hu>0?hu-.05:INS.A[1],INS.A[1]-.05,540,560,1.5);
+  {const v=wt('vainilla',INS.A[0]),c=wt('canela',INS.A[0]);const pv=pop(tn,v,INS.A[1]-.05),pc=pop(tn,c,INS.A[1]-.05);
+   $('n_vai').style.transform=`scale(${pv.s})`;$('n_vai').style.opacity=pv.o;$('n_can').style.transform=`scale(${pc.s})`;$('n_can').style.opacity=pc.o;}
   place('t_ting',t,33.0,34.3,780,600,-10);
   place('t_plus',t,33.25,34.4,260,640,6);
   place('t_antes',t,30.95,32.95,270,500,-4);
   place('t_desp',t,31.15,32.95,810,500,4);
-  place('cart',t,34.5,36.8,540,520,-2);
-  {const p=pop(t,34.7,36.8);const el=$('arrow');el.style.opacity=p.o;el.style.left='120px';el.style.top=(1480+Math.sin(t*10)*24)+'px';el.style.transform=`scale(${p.s}) rotate(18deg)`;}
+  const no=wt('noche',INS.B[0]),cr=wt('carrito',INS.B[0]);
+  place('t_dura',tn,no>0?no-.1:INS.B[0],cr>0?cr-.3:INS.B[1],540,470,-3);
+  place('cart',tn,cr>0?cr-.3:INS.B[0],INS.B[1]+.05,540,520,-2);
+  {const p=pop(tn,cr>0?cr-.15:INS.B[0],INS.B[1]+.05);const el=$('arrow');el.style.opacity=p.o;el.style.left='120px';el.style.top=(1480+Math.sin(TA*10)*24)+'px';el.style.transform=`scale(${p.s}) rotate(18deg)`;}
   place('bubble',t,37.9,40.4,700,520,0);
   place('t_vent',t,39.65,43.0,400,1080,-3);
   place('t_2019',t,40.6,43.0,420,1180,3);
@@ -484,9 +506,9 @@ function render(t){
       const hl=t>=a&&t<a+.8?1.06:1;el.style.transform=`scale(${p.s*hl}) rotate(${[-4,0,4][i]+Math.sin(t*3+i)*1.5}deg)`});
     place('v_btn',t,49.6,99,540,1105,0,1+.04*Math.sin(t*8));
     place('v_sig',t,50.85,99,540,1450,0);
-    $('v_dani').innerHTML=`<g transform="translate(540,${lerp(2500,2080,eout(seg(t,46.0,46.6)))}) scale(.72)">${dani({expr:'happy',arms:'wave',mouth:lvl(t),t})}</g>`;
+    $('v_dani').innerHTML=`<g transform="translate(540,${lerp(2500,2080,eout(seg(t,46.0,46.6)))}) scale(.72)">${dani({expr:'happy',arms:'wave',mouth:lvl(tn),t:TA})}</g>`;
   }
-  caption(t);
+  caption(tn);
   // destello
   $('flash').style.opacity=[33.0,30.9,45.7,7.15].reduce((m,a)=>Math.max(m,t>=a&&t<a+.25?.8*(1-seg(t,a,a+.25)):0),0);
 }
