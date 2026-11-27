@@ -1,0 +1,36 @@
+<style>
+@font-face{font-family:P;font-weight:800;src:url(../fonts/poppins-latin-800-normal.woff2)}
+@font-face{font-family:P;font-weight:900;src:url(../fonts/poppins-latin-900-normal.woff2)}
+@font-face{font-family:L;src:url(../fonts/luckiest-guy-latin-400-normal.woff2)}
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#241b40;font-family:P,sans-serif}
+#world{position:absolute;inset:0}
+.abs{position:absolute;left:0;top:0;transform-origin:50% 50%}
+.out{-webkit-text-stroke:0 transparent;paint-order:stroke fill}
+/* HUD */
+#hud{position:absolute;left:40px;right:40px;top:110px;height:110px;display:flex;gap:16px}
+.chip{background:rgba(20,14,38,.88);border:4px solid #fff;border-radius:22px;color:#fff;display:flex;align-items:center;padding:0 22px;font-weight:900;font-size:34px;box-shadow:0 6px 0 rgba(0,0,0,.35)}
+.chip small{display:block;font-size:20px;letter-spacing:2px;color:#b9b0d8;font-weight:800}
+#glowbar{flex:1;flex-direction:column;align-items:stretch;justify-content:center}
+#glowtop{display:flex;justify-content:space-between;font-size:20px;letter-spacing:2px;color:#b9b0d8}
+#glowpct{color:#ff5a6e;font-size:30px;letter-spacing:0}
+#gbar{height:24px;border-radius:12px;background:#3c335c;margin-top:6px;overflow:hidden}
+#gfill{height:100%;width:0;background:linear-gradient(90deg,#33d17a,#8ef0a0);border-radius:12px}
+#olor{position:absolute;left:40px;top:240px;width:330px;padding:14px 20px;background:rgba(20,14,38,.88);border:4px solid #ffd93b;border-radius:20px;color:#fff;font-weight:900}
+#olor small{font-size:19px;letter-spacing:2px;color:#b9b0d8}
+#olorlvl{font-size:38px;line-height:1.1}
+#obar{height:16px;border-radius:8px;background:#3c335c;margin-top:8px;overflow:hidden}
+#ofill{height:100%;border-radius:8px}
+/* captions */
+#cap{position:absolute;left:60px;right:60px;top:1235px;text-align:center;font-weight:900;font-size:78px;line-height:1.12;color:#fff;-webkit-text-stroke:16px #14101f;paint-order:stroke fill;letter-spacing:-1px}
+#cap span{display:inline-block;margin:0 8px}
+/* generic overlay elements */
+.card{background:#fff;border-radius:34px;box-shadow:0 18px 0 rgba(0,0,0,.35);border:6px solid #14101f;overflow:hidden}
+.big{font-family:L;color:#ffd93b;-webkit-text-stroke:18px #14101f;paint-order:stroke fill;text-align:center;white-space:nowrap}
+.tag{font-weight:900;color:#fff;background:#ff4757;border:6px solid #14101f;border-radius:20px;padding:10px 26px;font-size:50px;white-space:nowrap;box-shadow:0 10px 0 rgba(0,0,0,.35)}
+#vote{position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,#5a3fa8,#1d1538 70%);display:none}
+.vcard{position:absolute;width:300px;height:400px;background:#fff;border:7px solid #14101f;border-radius:34px;box-shadow:0 14px 0 rgba(0,0,0,.4);text-align:center;font-weight:900;font-size:50px;color:#14101f}
+.vcard .num{position:absolute;left:-22px;top:-26px;width:76px;height:76px;border-radius:50%;background:#ffd93b;border:6px solid #14101f;font-size:44px;line-height:66px}
+.vcard svg{margin-top:46px}
+.pill{font-weight:900;border:6px solid #14101f;border-radius:60px;padding:16px 40px;font-size:48px;white-space:nowrap;box-shadow:0 10px 0 rgba(0,0,0,.35)}
+</style>

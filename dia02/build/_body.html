@@ -1,0 +1,63 @@
+<div id="stage">
+  <svg id="world" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <div id="hud" class="abs" style="left:40px;top:110px;width:1000px;transform:none">
+    <div class="chip"><svg width="46" height="46" viewBox="0 0 46 46" style="margin-right:12px"><rect x="3" y="7" width="40" height="36" rx="7" fill="#fff"/><rect x="3" y="7" width="40" height="12" rx="6" fill="#ff4757"/><text x="23" y="38" font-family="P" font-weight="900" font-size="18" text-anchor="middle" fill="#14101f">2</text></svg><div><small>DÍA</small>2<span style="font-size:22px;color:#b9b0d8">/30</span></div></div>
+    <div class="chip" id="glowbar"><div id="glowtop"><span>GLOW-UP</span><span id="glowpct">5%</span></div><div id="gbar"><div id="gfill"></div></div></div>
+    <div class="chip" id="chipboda"><svg width="48" height="48" viewBox="0 0 48 48" style="margin-right:10px"><circle cx="18" cy="28" r="12" fill="none" stroke="#ffd93b" stroke-width="5"/><circle cx="30" cy="28" r="12" fill="none" stroke="#ffd93b" stroke-width="5"/><path d="M14 10l4-6 4 6-4 4z" fill="#8fe3ff"/></svg><div><small>BODA</small>29<span style="font-size:22px;color:#b9b0d8"> días</span></div></div>
+  </div>
+  <div id="olor" class="abs" style="opacity:0"><small>COLOR DE DIENTES</small><div id="olorlvl">QUESO CURADO</div><div id="obar"><div id="ofill"></div></div></div>
+
+  <div id="t_dia" class="abs big" style="font-size:190px;width:1080px;opacity:0">DÍA 2</div>
+  <div id="t_aprob" class="abs tag" style="background:#33d17a;opacity:0;font-size:48px">OLOR: APROBADO</div>
+  <div id="b_bolsa1" class="abs card" style="opacity:0;padding:24px 34px;font-weight:900;font-size:50px;color:#14101f;border-radius:40px">¿Quieres bolsa?</div>
+  <div id="b_bolsa2" class="abs card" style="opacity:0;padding:24px 34px;font-weight:900;font-size:50px;color:#14101f;border-radius:40px">¿Quieres... bolsa? <span style="color:#ff4f8b">♥</span></div>
+  <div id="t_dano" class="abs tag" style="opacity:0;font-size:52px;text-align:center;line-height:1.05">DAÑO VISUAL:<br>CRÍTICO</div>
+  <div id="pollres" class="abs card" style="width:760px;opacity:0;padding:26px 34px">
+    <div style="font-weight:900;font-size:30px;letter-spacing:3px;color:#8a7fa3">VOTACIÓN DEL DÍA 1</div>
+    <div style="display:flex;align-items:center;gap:18px;margin-top:16px"><div style="flex:1;height:64px;border-radius:18px;background:#ffd93b;border:5px solid #14101f;display:flex;align-items:center;padding:0 22px;font-weight:900;font-size:40px;color:#14101f">DIENTES</div><div class="pill" style="background:#33d17a;color:#fff;font-size:34px;padding:8px 22px;box-shadow:none;border-width:5px">GANÓ</div></div>
+    <div style="display:flex;gap:18px;margin-top:14px;opacity:.45"><div style="flex:1;height:52px;border-radius:16px;background:#e5e0ee;border:4px solid #14101f;font-weight:900;font-size:32px;padding:4px 22px">PELO</div><div style="flex:1;height:52px;border-radius:16px;background:#e5e0ee;border:4px solid #14101f;font-weight:900;font-size:32px;padding:4px 22px">GRANOS</div></div>
+  </div>
+  <div id="t_29" class="abs tag" style="font-size:58px;opacity:0;text-align:center;line-height:1.05">29 DÍAS PARA LA<br>BODA DE MI EX</div>
+  <div id="t_queso" class="abs tag" style="background:#e0a82e;color:#14101f;opacity:0;font-size:56px;display:flex;align-items:center;gap:16px"><svg width="80" height="64" viewBox="0 0 80 64"><path d="M4 56L40 8l36 48z" fill="#ffd25a" stroke="#14101f" stroke-width="5" stroke-linejoin="round"/><circle cx="34" cy="40" r="6" fill="#e0a82e"/><circle cx="50" cy="48" r="4" fill="#e0a82e"/><circle cx="44" cy="28" r="4" fill="#e0a82e"/></svg>QUESO CURADO</div>
+  <div id="order" class="abs card" style="width:840px;opacity:0;display:flex;align-items:center;gap:26px;padding:26px 32px;border-radius:30px">
+    <svg width="120" height="120" viewBox="-100 -130 200 240" style="border-radius:20px;background:#f1eaff;border:4px solid #14101f"><g id="boxicon"></g></svg>
+    <div style="flex:1"><div style="font-weight:800;font-size:28px;color:#8a7fa3;letter-spacing:2px">TIKTOK SHOP · PEDIDO</div><div style="font-weight:900;font-size:46px;color:#14101f;line-height:1.05" id="prodname"></div></div>
+    <div style="text-align:right"><div id="precio" style="font-weight:900;font-size:44px;color:#14101f"></div><div style="font-weight:800;font-size:24px;color:#20b26b" id="envio"></div></div>
+  </div>
+  <div id="t_color" class="abs card" style="opacity:0;padding:22px 34px;display:flex;align-items:center;gap:22px;font-weight:900;font-size:44px;color:#14101f">
+    <svg width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9b5cff" stroke="#14101f" stroke-width="6"/></svg>VS<svg width="100" height="100"><circle cx="50" cy="50" r="42" fill="#ffd93b" stroke="#14101f" stroke-width="6"/></svg><div style="line-height:1.05">SE<br>ANULAN</div></div>
+  <div id="t_ciencia" class="abs big" style="font-size:130px;opacity:0;color:#8fe3ff">¡CIENCIA!</div>
+  <div id="t_strip1" class="abs tag" style="background:#9b5cff;opacity:0;font-size:46px">TIRA 1: ARRIBA</div>
+  <div id="t_strip2" class="abs tag" style="background:#9b5cff;opacity:0;font-size:46px">TIRA 2: ABAJO</div>
+  <div id="t_timer" class="abs card" style="opacity:0;padding:20px 34px;display:flex;align-items:center;gap:20px;font-weight:900;font-size:48px;color:#14101f">
+    <svg width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="48" r="40" fill="#fff" stroke="#14101f" stroke-width="7"/><path id="hand" d="M48 48V18" stroke="#ff4757" stroke-width="7" stroke-linecap="round"/></svg>30 MIN SIN HABLAR</div>
+  <div id="t_despues" class="abs" style="width:1080px;height:1920px;background:#ff9f43;opacity:0;display:flex;align-items:center;justify-content:center"><div class="big" style="font-size:96px;color:#fff;line-height:1">30 MINUTOS<br>DESPUÉS...</div></div>
+  <div id="t_ting" class="abs big" style="font-size:150px;opacity:0">¡TING!</div>
+  <div id="t_plus" class="abs tag" style="background:#33d17a;font-size:70px;opacity:0;text-align:center;line-height:1">+5%<div style="font-size:30px;letter-spacing:3px">GLOW-UP</div></div>
+  <div id="t_antes" class="abs tag" style="background:#6b6b6b;font-size:52px;opacity:0">ANTES</div>
+  <div id="t_desp" class="abs tag" style="background:#9b5cff;font-size:52px;opacity:0">DESPUÉS</div>
+  <div id="cart" class="abs pill" style="background:#ff7a1a;color:#fff;opacity:0;display:flex;align-items:center;gap:16px;font-size:40px;padding:16px 34px"><svg width="54" height="54" viewBox="0 0 70 70"><path d="M6 16h9l8 32h32l7-24H21" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round"/><circle cx="28" cy="60" r="6" fill="#fff"/><circle cx="52" cy="60" r="6" fill="#fff"/></svg>EN EL CARRITO NARANJA</div>
+  <svg id="arrow" class="abs" width="140" height="170" viewBox="0 0 140 170" style="opacity:0"><path d="M70 6v120M20 90l50 60 50-60" fill="none" stroke="#14101f" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/><path d="M70 6v120M20 90l50 60 50-60" fill="none" stroke="#ff7a1a" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div id="t_novayas" class="abs big" style="font-size:112px;opacity:0;line-height:1;color:#fff">NO TE<br><span style="color:#ffd93b">VAYAS...</span></div>
+  <div id="note" class="abs card" style="opacity:0;padding:16px 24px;font-weight:900;font-size:38px;color:#14101f;background:#fff8d6;border-radius:12px">6XX XX XX XX <span style="color:#ff4f8b">♥</span></div>
+  <div id="t_num" class="abs tag" style="background:#ff4f8b;opacity:0;font-size:50px">¡NÚMERO CONSEGUIDO!</div>
+  <div id="phone" class="abs card" style="left:190px;top:420px;width:700px;height:880px;opacity:0;background:#14101f;border-color:#fff">
+    <div style="display:flex;align-items:center;gap:18px;padding:30px;border-bottom:3px solid #2a2244"><div style="width:86px;height:86px;border-radius:50%;background:#ff6fa3;border:5px solid #fff;display:flex;align-items:center;justify-content:center;font-family:L;font-size:46px;color:#fff">L</div><div style="color:#fff;font-weight:900;font-size:44px">Lucía</div></div>
+    <div id="typing" style="margin:40px 30px;width:150px;padding:22px;border-radius:30px;background:#2a2244;display:flex;gap:14px;justify-content:center"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+    <div id="msg" style="margin:40px 30px;padding:26px 30px;border-radius:30px;background:#2a2244;color:#fff;font-weight:800;font-size:46px;opacity:0">Oye... ¿has cambiado algo?</div>
+  </div>
+  <div id="vote">
+    <div id="v_q" class="abs big" style="font-size:96px;width:1080px;top:300px;line-height:1.05;color:#fff">¿QUÉ ARREGLAMOS<br><span style="color:#ffd93b">MAÑANA?</span></div>
+    <div id="v1" class="vcard abs" style="left:45px;top:640px"><div class="num">1</div>
+      <svg width="190" height="190" viewBox="0 0 100 100"><path d="M18 60C10 20 40 6 60 12s30 30 22 50c-6-14-14-20-14-20s-4 12-18 16c4-8 2-14 2-14s-10 12-34 16z" fill="#4a3324" stroke="#14101f" stroke-width="6" stroke-linejoin="round"/><path d="M30 80l40-40M70 80L30 40" stroke="#9aa3ad" stroke-width="8" stroke-linecap="round"/><circle cx="26" cy="84" r="9" fill="none" stroke="#ff4757" stroke-width="6"/><circle cx="74" cy="84" r="9" fill="none" stroke="#ff4757" stroke-width="6"/></svg><div>PELO</div></div>
+    <div id="v2" class="vcard abs" style="left:390px;top:640px"><div class="num">2</div>
+      <svg width="190" height="190" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="#f3c6a5" stroke="#14101f" stroke-width="6"/><circle cx="36" cy="40" r="9" fill="#ff5a5a"/><circle cx="36" cy="38" r="3.5" fill="#fff4c2"/><circle cx="64" cy="58" r="11" fill="#ff5a5a"/><circle cx="64" cy="55" r="4" fill="#fff4c2"/><circle cx="48" cy="70" r="6" fill="#ff5a5a"/></svg><div>GRANOS</div></div>
+    <div id="v3" class="vcard abs" style="left:735px;top:640px"><div class="num">3</div>
+      <svg width="190" height="190" viewBox="0 0 100 100"><path d="M30 14l-24 16 10 18 10-6v46h48V42l10 6 10-18-24-16c-4 8-12 12-20 12s-16-4-20-12z" fill="#6f7d3c" stroke="#14101f" stroke-width="6" stroke-linejoin="round"/><circle cx="40" cy="50" r="6" fill="#6b4b2a"/><circle cx="60" cy="66" r="5" fill="#6b4b2a"/></svg><div>ROPA</div></div>
+    <div id="v_btn" class="abs pill" style="background:#ffd93b;color:#14101f;opacity:0">VOTA EN LA ENCUESTA</div>
+    <div id="v_sig" class="abs pill" style="background:#ff4f8b;color:#fff;opacity:0;font-size:40px">SÍGUEME · DÍA 3 MAÑANA</div>
+    <svg id="v_dani" class="abs" width="1080" height="1920" viewBox="0 0 1080 1920" style="pointer-events:none"></svg>
+  </div>
+  <div id="cap"></div>
+  <div id="flash" class="abs" style="width:1080px;height:1920px;background:#fff;opacity:0"></div>
+</div>
