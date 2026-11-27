@@ -396,15 +396,16 @@ const W=$('world');let TA=0;
 const YEL='#e0b53a', WHT='#fbfaf2';
 function mixc(a,b,k){const p=x=>[1,3,5].map(i=>parseInt(x.substr(i,2),16));const A=p(a),B=p(b);return '#'+A.map((v,i)=>Math.round(v+(B[i]-v)*k).toString(16).padStart(2,'0')).join('')}
 function shot(t){ // [t0,t1,scene,cx,cy,z0,z1]
-  const S=[[0,5.6,'super',540,1000,1.0,1.06],[5.6,9.58,'super',600,1000,1.06,1.12],[9.58,10.55,'super',330,985,2.3,2.4],[10.55,11.6,'super',850,930,2.4,2.5],
+  const S=[[-9,5.6,'super',540,1000,1.0,1.06],[5.6,9.58,'super',600,1000,1.06,1.12],[9.58,10.55,'super',330,985,2.3,2.4],[10.55,11.6,'super',850,930,2.4,2.5],
    [11.6,17.4,'room',540,1060,1.0,1.08],[17.4,20.0,'room',540,930,2.0,2.15],[20.0,25.8,'room',540,1020,1.15,1.22],[25.8,35.9,'room',540,930,2.15,2.35],
    [35.9,38.0,'split',0,0,1,1],[38.0,42.3,'room',540,1040,1.08,1.14],[42.3,47.4,'super',600,1000,1.05,1.15],[47.4,49.85,'super',600,1000,1.15,1.2],[49.85,99,'vote',0,0,1,1]];
   for(const s of S)if(t>=s[0]&&t<s[1])return{scene:s[2],cx:s[3],cy:s[4],z:lerp(s[5],s[6],seg(t,s[0],s[1])),t0:s[0]};
 }
 function teethCol(t){return t<32.4?YEL:mixc(YEL,WHT,eio(seg(t,32.4,33.6)))}
-function render(t){
-  TA=t;const sh=shot(t);
-  const mouth=lvl(t), tc=teethCol(t);
+const inv=tn=>{const n=TMAP.n,o=TMAP.o;if(tn<=n[0])return o[0]+(tn-n[0]);for(let i=1;i<n.length;i++)if(tn<=n[i])return o[i-1]+(tn-n[i-1])*(o[i]-o[i-1])/(n[i]-n[i-1]);return o[o.length-1]+(tn-n[n.length-1])};
+function render(tn){
+  const t=inv(tn);TA=tn;const sh=shot(t);
+  const mouth=lvl(tn), tc=teethCol(t);
   let s='';
   // sacudidas
   let shk=0;for(const [a,amp] of [[10.0,24],[10.62,16],[33.68,14],[47.5,18],[13.9,10]]){if(t>=a&&t<a+.35)shk=Math.max(shk,amp*(1-seg(t,a,a+.35)))}
@@ -412,7 +413,7 @@ function render(t){
   if(sh.scene==='super'){
     const second=t>=42.3;
     // Dani
-    let dx=330, bob=0; if(t<1.4){dx=lerp(-260,330,eout(seg(t,0,1.4)));bob=-Math.abs(Math.sin(t*12))*18}
+    let dx=330, bob=0; if(t<1.4){dx=lerp(-260,330,eout(seg(t,-0.3,1.4)));bob=-Math.abs(Math.sin(t*12))*18}
     let ex='happy',arms='down',glint=0,shine=0,grin=false;
     if(t>=5.6&&t<9.58)ex='happy';
     if(t>=9.58&&t<11.6){ex='grin';glint=t>=9.9&&t<10.6?Math.sin(seg(t,9.9,10.6)*Math.PI):0}
@@ -501,7 +502,7 @@ function render(t){
     place('v_sig',t,54.7,99,540,1395,0);
     $('v_dani').innerHTML=`<g transform="translate(540,${lerp(2500,2170,eout(seg(t,50.1,50.7)))}) scale(.72)">${dani({expr:'grin',arms:'wave',teeth:WHT,shine:1,mouth:0,t:TA})}</g>`;
   }
-  caption(t);
+  caption(tn);
   $('flash').style.opacity=[9.58,10.55,33.68,42.3,49.85,35.9].reduce((m,a)=>Math.max(m,t>=a&&t<a+.25?.8*(1-seg(t,a,a+.25)):0),0);
 }
 window.render=render;render(0);
