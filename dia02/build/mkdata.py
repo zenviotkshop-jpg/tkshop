@@ -4,7 +4,8 @@ fps=30;T=58.3;N=int(T*fps)
 if len(sys.argv)>1:
     raw=subprocess.run(['ffmpeg','-v','error','-i',sys.argv[1],'-ac','1','-ar','24000','-f','s16le','-'],capture_output=True).stdout
     x=np.frombuffer(raw,np.int16)/32768;hop=24000//fps;n=len(x)//hop;r=np.sqrt((x[:n*hop].reshape(n,hop)**2).mean(1))
-    lv=list(np.clip((20*np.log10(r+1e-6)+42)/26,0,1))
+    d=20*np.log10(r+1e-6);ref=np.percentile(d[d>-50],95) if (d>-50).any() else -20
+    lv=list(np.clip((d-(ref-26))/22,0,1))
 else:
     lv=[0.0]*N
     for a,b,w in words:

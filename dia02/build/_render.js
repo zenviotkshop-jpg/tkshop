@@ -14,11 +14,12 @@ function teethCol(t){return t<32.4?YEL:mixc(YEL,WHT,eio(seg(t,32.4,33.6)))}
 const inv=tn=>{const n=TMAP.n,o=TMAP.o;if(tn<=n[0])return o[0]+(tn-n[0]);for(let i=1;i<n.length;i++)if(tn<=n[i])return o[i-1]+(tn-n[i-1])*(o[i]-o[i-1])/(n[i]-n[i-1]);return o[o.length-1]+(tn-n[n.length-1])};
 function render(tn){
   const t=inv(tn);TA=tn;const sh=shot(t);
-  const mouth=lvl(tn), tc=teethCol(t);
+  const L0=Math.min(1,lvl(tn)*1.2);const mouth=L0>0.08?L0*(0.5+0.5*Math.abs(Math.sin(TA*13))):0, tc=teethCol(t);
   let s='';
   // sacudidas
   let shk=0;for(const [a,amp] of [[10.0,24],[10.62,16],[33.68,14],[47.5,18],[13.9,10]]){if(t>=a&&t<a+.35)shk=Math.max(shk,amp*(1-seg(t,a,a+.35)))}
-  const cam=`translate(${540+Math.sin(t*95)*shk},${960+Math.cos(t*80)*shk}) scale(${sh.z}) translate(${-sh.cx},${-sh.cy})`;
+  const hx=Math.sin(TA*0.9)*7+Math.sin(TA*2.1)*3, hy=Math.cos(TA*0.7)*6;
+  const cam=`translate(${540+Math.sin(t*95)*shk+hx},${960+Math.cos(t*80)*shk+hy}) scale(${sh.z*(1+0.012*Math.sin(TA*0.8))}) translate(${-sh.cx},${-sh.cy})`;
   if(sh.scene==='super'){
     const second=t>=42.3;
     // Dani
@@ -32,7 +33,7 @@ function render(tn){
     let g=0,heart=false,blush=false,scared=false,cm=0;
     if(!second){if(t>=10.6){g=eout(seg(t,10.6,10.85));} if(t>=10.0&&t<10.6)scared=true; if(t>=7.9&&t<9.4)cm=.4+.3*Math.sin(TA*20)}
     else{g=1-eout(seg(t,45.0,45.3)); if(t>=45.3){heart=true;blush=true} if(t>=43.7&&t<44.7)cm=.4+.3*Math.sin(TA*20)}
-    s+=`<g transform="${cam}">${SUPERBG}<g transform="translate(850,1250)">${cashier({glasses:g,heart,blush,scared,mouth:cm})}</g>${COUNTER()}
+    s+=`<g transform="${cam}">${SUPERBG}<g transform="translate(850,${1250-Math.abs(Math.sin(TA*3))*6}) rotate(${Math.sin(TA*1.3)*2} 0 -200)">${cashier({glasses:g,heart,blush,scared,mouth:cm})}</g>${COUNTER()}
       <g transform="translate(${dx},${1640+bob}) scale(.95)">${stink(0,-560,t<6?.35:0,TA,'#ff9ccc')}${dani(dopt)}</g>`;
     if(second&&t>=44.8)s+=sparkles(330,985,TA,7,200);
     if(second&&t>=45.3){for(let i=0;i<4;i++){const k=((TA*.6+i/4)%1);s+=`<path transform="translate(${850+Math.sin(TA*2+i)*120},${800-k*300}) scale(${1.4})" d="M0 10C-26 -6 -14 -26 0 -12C14 -26 26 -6 0 10Z" fill="#ff4f8b" stroke="#14101f" stroke-width="3" opacity="${1-k}"/>`}}
@@ -52,7 +53,7 @@ function render(tn){
     s+=`</g>`;
   } else if(sh.scene==='split'){
     s+=`<defs><clipPath id="cl"><rect x="0" y="0" width="538" height="1920"/></clipPath><clipPath id="cr"><rect x="542" y="0" width="538" height="1920"/></clipPath></defs>`;
-    const face=(x,te,sp)=>`<g transform="translate(${x},1830) scale(1.15)">${dani({expr:'grin',teeth:te,shine:sp,mouth:0,t:TA})}</g>`;
+    const face=(x,te,sp)=>`<g transform="translate(${x},1830) scale(1.15)">${dani({expr:'grin',teeth:te,shine:sp,mouth,t:TA})}</g>`;
     s+=`<g clip-path="url(#cl)"><g transform="translate(-270,0)">${ROOM}</g><rect width="540" height="1920" fill="#000" opacity=".35"/>${face(270,YEL,0)}</g>`;
     s+=`<g clip-path="url(#cr)"><g transform="translate(270,0)">${ROOM}</g>${face(810,WHT,1+.2*Math.sin(TA*9))}${sparkles(810,1050,TA,7,240)}</g><rect x="533" width="14" height="1920" fill="#fff"/>`;
   }
@@ -109,7 +110,7 @@ function render(tn){
       const hl=t>=a&&t<a+.8?1.06:1;el.style.transform=`scale(${p.s*hl}) rotate(${[-4,0,4][i]+Math.sin(TA*3+i)*1.5}deg)`});
     place('v_btn',t,53.55,99,540,1105,0,1+.04*Math.sin(TA*8));
     place('v_sig',t,54.7,99,540,1395,0);
-    $('v_dani').innerHTML=`<g transform="translate(540,${lerp(2500,2170,eout(seg(t,50.1,50.7)))}) scale(.72)">${dani({expr:'grin',arms:'wave',teeth:WHT,shine:1,mouth:0,t:TA})}</g>`;
+    $('v_dani').innerHTML=`<g transform="translate(540,${lerp(2500,2170,eout(seg(t,50.1,50.7)))}) scale(.72)">${dani({expr:'grin',arms:'wave',teeth:WHT,shine:1,mouth,t:TA})}</g>`;
   }
   caption(tn);
   $('flash').style.opacity=[9.58,10.55,33.68,42.3,49.85,35.9].reduce((m,a)=>Math.max(m,t>=a&&t<a+.25?.8*(1-seg(t,a,a+.25)):0),0);

@@ -85,6 +85,8 @@ function dani(o){
   let s='';
   // sombra
   s+=`<ellipse cx="0" cy="0" rx="210" ry="30" fill="#000" opacity=".25"/>`;
+  const _t=o.t||0,_k=o.mouth||0;
+  s+=`<g transform="rotate(${Math.sin(_t*1.6)*1.8} 0 -60) translate(0,${-Math.abs(Math.sin(_t*5.5))*_k*14})">`;
   // zapatillas
   for(const sx of[-1,1])s+=`<g transform="translate(${sx*78},-28)"><path d="M-78 10c0-40 20-56 60-56h40c38 0 56 26 56 56z" fill="#3c3f46" stroke="${OL}" stroke-width="8"/><rect x="-80" y="4" width="160" height="24" rx="12" fill="#ece5d2" stroke="${OL}" stroke-width="7"/><path d="M-20 -40l30 12M-24 -26l30 12" stroke="#ece5d2" stroke-width="6" stroke-linecap="round"/><circle cx="30" cy="-10" r="6" fill="#8a6a3a" opacity=".7"/></g>`;
   // pantalones
@@ -112,7 +114,7 @@ function dani(o){
   s+=limb(la,74,HD)+hand(...la[2])+limb(ra,74,HD)+(arms==='spray'||arms==='hold'?'':hand(...ra[2]));
   // cabeza
   const hy=-690;
-  s+=`<g transform="translate(0,${hy}) rotate(${o.tilt||0})">`;
+  s+=`<g transform="translate(0,${hy}) rotate(${(o.tilt||0)+Math.sin(_t*2.3)*2.5+Math.sin(_t*9)*_k*4})">`;
   // pelo trasero
   s+=`<path d="M-200 30C-230 -140 -120 -215 0 -212C130 -215 230 -140 200 30C210 80 170 120 150 90L150 -20H-150V90C-170 120-210 80-200 30Z" fill="#3b2a1e" stroke="${OL}" stroke-width="8"/>`;
   s+=`<circle cx="0" cy="0" r="180" fill="${SK}" stroke="${OL}" stroke-width="9"/>`;
@@ -153,12 +155,12 @@ function dani(o){
   // boca
   const my=112;
   if(ex==='happy'){
-    s+=`<path d="M-70 ${my-14}Q0 ${my+70+m*20} 70 ${my-14}Z" fill="#5a1e24" stroke="${OL}" stroke-width="8" stroke-linejoin="round"/><path d="M-58 ${my-10}h116l-8 18h-100z" fill="${TC}"/>`;
+    s+=`<path d="M-70 ${my-14}Q0 ${my+62+m*55} 70 ${my-14}Z" fill="#5a1e24" stroke="${OL}" stroke-width="8" stroke-linejoin="round"/><path d="M-58 ${my-10}h116l-8 18h-100z" fill="${TC}"/>`;
   }else if(ex==='grin'){
     s+=grinMouth(o,TC,my);
   }else{
     const op=ex==='shock'?Math.max(m,.55):m;
-    const h=6+op*58, w=ex==='shock'?40:52;
+    const h=6+op*78, w=ex==='shock'?40:56;
     s+=`<ellipse cx="0" cy="${my+h/2-6}" rx="${w-op*6}" ry="${h/2+4}" fill="#5a1e24" stroke="${OL}" stroke-width="8"/>`;
     if(op>.12)s+=`<path d="M${-w+12} ${my-6}h${(w-12)*2}v${12+op*6}h-${(w-12)*2*0.3}v-4h-${(w-12)*2*0.2}v6h-${(w-12)*2*0.5}z" fill="${TC}" stroke="${OL}" stroke-width="3"/>`;
   }
@@ -173,6 +175,7 @@ function dani(o){
   s+=bot;
   if(arms==='spray'||arms==='hold')s+=hand(...ra[2]);
   if(o.glint)s+=`<circle cx="0" cy="-560" r="${120+60*o.glint}" fill="#ffe45c" opacity="${.45*o.glint}"/>`+[0,1,2,3,4,5].map(i=>`<path transform="translate(0,-560) rotate(${i*60+o.glint*40})" d="M-10 0L0 -${150+120*o.glint}L10 0Z" fill="#ffe45c" opacity="${.8*o.glint}"/>`).join('');
+  s+='</g>';
   return s;
 }
 function rays(x,y,t){let s='';for(let i=0;i<12;i++){const a=i*30+t*40;s+=`<path transform="translate(${x},${y}) rotate(${a})" d="M0 0L-28 -260L28 -260Z" fill="#fff6a8" opacity=".45"/>`}return s+`<circle cx="${x}" cy="${y}" r="120" fill="#fff6a8" opacity=".5"/>`}
@@ -225,9 +228,10 @@ function caption(t){
 
 
 function grinMouth(o,TC,my){
-  let s=`<rect x="-82" y="${my-24}" width="164" height="74" rx="34" fill="#5a1e24" stroke="${OL}" stroke-width="8"/>`;
-  s+=`<rect x="-70" y="${my-16}" width="140" height="28" rx="8" fill="${TC}" stroke="${OL}" stroke-width="4"/><rect x="-62" y="${my+18}" width="124" height="22" rx="8" fill="${TC}" stroke="${OL}" stroke-width="4"/>`;
-  for(const x of[-40,-14,14,40])s+=`<path d="M${x} ${my-14}v24M${x} ${my+20}v18" stroke="${OL}" stroke-width="3" opacity=".6"/>`;
+  const J=(o.strip?0:(o.mouth||0))*34;
+  let s=`<rect x="-82" y="${my-24}" width="164" height="${74+J}" rx="34" fill="#5a1e24" stroke="${OL}" stroke-width="8"/>`;
+  s+=`<rect x="-70" y="${my-16}" width="140" height="28" rx="8" fill="${TC}" stroke="${OL}" stroke-width="4"/><rect x="-62" y="${my+18+J}" width="124" height="22" rx="8" fill="${TC}" stroke="${OL}" stroke-width="4"/>`;
+  for(const x of[-40,-14,14,40])s+=`<path d="M${x} ${my-14}v24M${x} ${my+20+J}v18" stroke="${OL}" stroke-width="3" opacity=".6"/>`;
   if(o.strip>=1)s+=`<rect x="-76" y="${my-20}" width="152" height="34" rx="10" fill="#9b5cff" opacity=".82" stroke="#5b2bb0" stroke-width="4"/>`;
   if(o.strip>=2)s+=`<rect x="-68" y="${my+14}" width="136" height="30" rx="10" fill="#9b5cff" opacity=".82" stroke="#5b2bb0" stroke-width="4"/>`;
   if(o.shine)for(const [x,y] of[[-46,my-6],[30,my+24],[56,my-8]])s+=`<path transform="translate(${x},${y}) scale(${o.shine})" d="M0 -16l4 12 12 4-12 4-4 12-4-12-12-4 12-4z" fill="#fff"/>`;

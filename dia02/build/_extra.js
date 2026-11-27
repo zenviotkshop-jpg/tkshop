@@ -1,8 +1,9 @@
 
 function grinMouth(o,TC,my){
-  let s=`<rect x="-82" y="${my-24}" width="164" height="74" rx="34" fill="#5a1e24" stroke="${OL}" stroke-width="8"/>`;
-  s+=`<rect x="-70" y="${my-16}" width="140" height="28" rx="8" fill="${TC}" stroke="${OL}" stroke-width="4"/><rect x="-62" y="${my+18}" width="124" height="22" rx="8" fill="${TC}" stroke="${OL}" stroke-width="4"/>`;
-  for(const x of[-40,-14,14,40])s+=`<path d="M${x} ${my-14}v24M${x} ${my+20}v18" stroke="${OL}" stroke-width="3" opacity=".6"/>`;
+  const J=(o.strip?0:(o.mouth||0))*34;
+  let s=`<rect x="-82" y="${my-24}" width="164" height="${74+J}" rx="34" fill="#5a1e24" stroke="${OL}" stroke-width="8"/>`;
+  s+=`<rect x="-70" y="${my-16}" width="140" height="28" rx="8" fill="${TC}" stroke="${OL}" stroke-width="4"/><rect x="-62" y="${my+18+J}" width="124" height="22" rx="8" fill="${TC}" stroke="${OL}" stroke-width="4"/>`;
+  for(const x of[-40,-14,14,40])s+=`<path d="M${x} ${my-14}v24M${x} ${my+20+J}v18" stroke="${OL}" stroke-width="3" opacity=".6"/>`;
   if(o.strip>=1)s+=`<rect x="-76" y="${my-20}" width="152" height="34" rx="10" fill="#9b5cff" opacity=".82" stroke="#5b2bb0" stroke-width="4"/>`;
   if(o.strip>=2)s+=`<rect x="-68" y="${my+14}" width="136" height="30" rx="10" fill="#9b5cff" opacity=".82" stroke="#5b2bb0" stroke-width="4"/>`;
   if(o.shine)for(const [x,y] of[[-46,my-6],[30,my+24],[56,my-8]])s+=`<path transform="translate(${x},${y}) scale(${o.shine})" d="M0 -16l4 12 12 4-12 4-4 12-4-12-12-4 12-4z" fill="#fff"/>`;
